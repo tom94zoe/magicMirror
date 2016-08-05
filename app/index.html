@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="magicMirrorAppApp" style="background: black; color:greenyellow"
+        flex ng-controller="MainCtrl as mainCtrl">
+    <!--[if lte IE 8]>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+<div layout="column" flex>
+    <div  layout="row" flex >
+     <md-card layout="column" flex="50">
+       <span style="font-size: 36px; margin-bottom:10px; text-align: center"> {{mainCtrl.date | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+       <table style="width: 100%">
+         <tr ng-repeat="depart  in mainCtrl.uTwoData.data.monitors[0].lines[0].departures.departure">
+           <td>
+             {{::mainCtrl.uTwoData.data.monitors[0].lines[0].name}}
+           </td>
+           <td>
+             {{::mainCtrl.uTwoData.data.monitors[0].lines[0].towards}}
+           </td>
+           <td style="text-align: right">
+             <span ng-show="depart.departureTime.countdown !== 0" class="jump">{{::depart.departureTime.countdown}}</span>
+             <span ng-show="depart.departureTime.countdown === 0" class="jump">*</span>
+           </td>
+         </tr>
+       </table>
+     </md-card>
+
+      <md-card layout="row" flex="50">
+        <canvas id="line" class="chart chart-line" chart-data="mainCtrl.chartData"
+                chart-labels="mainCtrl.labels" chart-series="mainCtrl.series" chart-options="mainCtrl.options">
+        </canvas>
+      </md-card>
+    </div>
+<md-card >
+  <table>
+    <tr>
+      <td></td>
+      <td ng-repeat="entry in mainCtrl.todaysWeatherDataList">{{entry.dt*1000|date:'HH:MM'}}</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td ng-repeat="entry in mainCtrl.todaysWeatherDataList">{{entry.main.temp_max_celsius|number:2}}°</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td ng-repeat="entry in mainCtrl.todaysWeatherDataList">{{entry.main.temp_min_celsius|number:2}}°</td>
+    </tr>
+  </table>
+</md-card>
+</div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <!-- <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script> -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <!-- controllers -->
+        <script src="scripts/controllers/main.js"></script>
+        <!-- services -->
+    <script src="scripts/services/temperatureService.js"></script>
+    <script src="scripts/services/weatherService.js"></script>
+    <script src="scripts/services/commonService.js"></script>
+    <!-- filter -->
+        <!-- endbuild -->
+</body>
+</html>

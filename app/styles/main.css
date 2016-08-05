@@ -1,0 +1,18 @@
+body {
+  padding: 0;
+}
+
+.jump{
+  left:20px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+canvas{
+  width:100% !important;
+  height: auto !important;
+}
+
+
