@@ -62,6 +62,10 @@
       <td>min</td>
       <td ng-repeat="entry in mainCtrl.todaysWeatherDataList">{{entry.main.temp_min_celsius|number:2}}°</td>
     </tr>
+    <tr>
+      <td></td>
+      <td ng-repeat="entry in mainCtrl.todaysWeatherDataList"><img ng-src="{{entry.weather.icon_url}}" class="weather"></td>
+    </tr>
   </table>
 </md-card>
 </div>

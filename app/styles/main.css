@@ -15,4 +15,9 @@ canvas{
   height: auto !important;
 }
 
+img.weather{
+  -webkit-filter: grayscale(100%) invert(35%);
+  filter: grayscale(100%) invert(35%);
+}
+
 

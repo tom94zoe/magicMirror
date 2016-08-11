@@ -9,6 +9,7 @@ angular.module('magicMirrorAppApp')
     function mapEntry(entry) {
       entry.main.temp_max_celsius = temperatureService.convertKelvinToCelsius(entry.main.temp_max);
       entry.main.temp_min_celsius = temperatureService.convertKelvinToCelsius(entry.main.temp_min);
+      entry.weather.icon_url = ['http://openweathermap.org/img/w/',entry.weather[0].icon,'.png'].join('');
     };
 
     function mapAllEntries(list) {
