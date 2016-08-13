@@ -14,6 +14,10 @@ canvas{
   width:100% !important;
   height: auto !important;
 }
+div.chart-container{
+  width:100% !important;
+  height: auto !important;
+}
 
 img.weather{
   -webkit-filter: grayscale(100%) invert(35%);

@@ -23,8 +23,8 @@
 
     <!-- Add your site or application content here -->
 <div layout="column" flex>
-    <div  layout="row" flex >
-     <md-card layout="column" flex="50">
+    <div  layout-gt-xs="row" layout-xs="column" flex >
+     <md-card layout="column" flex-gt-xs="50" flex-xs="100">
        <span style="font-size: 36px; margin-bottom:10px; text-align: center"> {{mainCtrl.date | date:'dd.MM.yyyy HH:mm:ss'}}</span>
        <table style="width: 100%">
          <tr ng-repeat="depart  in mainCtrl.uTwoData.data.monitors[0].lines[0].departures.departure">
@@ -42,7 +42,7 @@
        </table>
      </md-card>
 
-      <md-card layout="row" flex="50">
+      <md-card layout="row" flex-gt-xs="50" flex-xs="100">
         <canvas id="line" class="chart chart-line" chart-data="mainCtrl.chartData"
                 chart-labels="mainCtrl.labels" chart-series="mainCtrl.series" chart-options="mainCtrl.options">
         </canvas>
