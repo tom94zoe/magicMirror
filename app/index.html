@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="magicMirrorAppApp" style="background: black; color:greenyellow"
+  <body ng-app="magicMirrorAppApp" style="background: black; color:white"
         flex ng-controller="MainCtrl as mainCtrl">
     <!--[if lte IE 8]>
     <![endif]-->
@@ -26,20 +26,20 @@
     <div  layout-gt-xs="row" layout-xs="column" flex >
      <md-card layout="column" flex-gt-xs="50" flex-xs="100">
        <span style="font-size: 36px; margin-bottom:10px; text-align: center"> {{mainCtrl.date | date:'dd.MM.yyyy HH:mm:ss'}}</span>
-       <table style="width: 100%">
-         <tr ng-repeat="depart  in mainCtrl.uTwoData.data.monitors[0].lines[0].departures.departure">
-           <td>
+       <div flex>
+         <div ng-repeat="depart  in mainCtrl.uTwoData.data.monitors[0].lines[0].departures.departure" layout="row">
+           <div flex="20">
              {{::mainCtrl.uTwoData.data.monitors[0].lines[0].name}}
-           </td>
-           <td>
+           </div>
+           <div flex="50">
              {{::mainCtrl.uTwoData.data.monitors[0].lines[0].towards}}
-           </td>
-           <td style="text-align: right">
-             <span ng-show="depart.departureTime.countdown !== 0" class="jump">{{::depart.departureTime.countdown}}</span>
-             <span ng-show="depart.departureTime.countdown === 0" class="jump">*</span>
-           </td>
-         </tr>
-       </table>
+           </div>
+           <div style="text-align: right" flex="30" >
+             <div ng-show="depart.departureTime.countdown !== 0">{{::depart.departureTime.countdown}}</div>
+             <div ng-show="depart.departureTime.countdown === 0" class="animateAsterisk">*</div>
+           </div>
+         </div>
+       </div>
      </md-card>
 
       <md-card layout="row" flex-gt-xs="50" flex-xs="100">

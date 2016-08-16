@@ -24,4 +24,17 @@ img.weather{
   filter: grayscale(100%) invert(35%);
 }
 
+.animateAsterisk{
+  animation: nudge 2.5s ease infinite;
+}
+
+@keyframes nudge {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 0);
+  }
+}
 
